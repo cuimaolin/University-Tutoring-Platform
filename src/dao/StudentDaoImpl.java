@@ -1,45 +1,42 @@
 package dao;
 
-import bean.Teacher;
+import bean.Student;
 import util.DBUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeacherDAO {
-    public static void main(String[] args){
-        System.out.println(new TeacherDAO().ListTeacher().size());
-    }
+public class StudentDaoImpl implements UserDao<Student>{
 
-    public List<Teacher> ListTeacher(){
-        List<Teacher> teachers = new ArrayList<Teacher>();
-
+    @Override
+    public List<Student> listUser() {
+        List<Student> students = new ArrayList<Student>();
         try{
             Connection c = DBUtil.getConnection();
 
-            String sql = "select * from teacher order by id desc";
+            String sql = "select * from student order by id desc";
 
             PreparedStatement ps = c.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                Teacher teacher = new Teacher();
-                int id = rs.getInt(2);
-                String name = rs.getString(1);
+                Student student = new Student();
+                int id = rs.getInt(1);
+                String name = rs.getString(2);
                 String subject = rs.getString(3);
                 String number = rs.getString(4);
                 float price = rs.getFloat(5);
                 String password = rs.getString(6);
 
-                teacher.setId(id);
-                teacher.setName(name);
-                teacher.setNumber(number);
-                teacher.setSubject(subject);
-                teacher.setPiece(price);
-                teacher.setPassword(password);
-                teachers.add(teacher);
+                student.setId(id);
+                student.setName(name);
+                student.setNumber(number);
+                student.setSubject(subject);
+                student.setPiece(price);
+                student.setPassword(password);
+                students.add(student);
             }
 
             ps.close();
@@ -48,15 +45,16 @@ public class TeacherDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return teachers;
+        return students;
     }
 
-    public Teacher getTeacher(String name, String password){
-        Teacher result = null;
+    @Override
+    public Student getUser(String name, String password) {
+        Student result = null;
         try {
             Connection c = DBUtil.getConnection();
 
-            String sql = "select * from teacher where name = ? and password = ?";
+            String sql = "select * from student where name = ? and password = ?";
 
             PreparedStatement ps = c.prepareStatement(sql);
 
@@ -65,8 +63,8 @@ public class TeacherDAO {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()){
-                result = new Teacher();
-                int id = rs.getInt(2);
+                result = new Student();
+                int id = rs.getInt(1);
                 String subject = rs.getString(3);
                 String number = rs.getString(4);
                 float price = rs.getFloat(5);
@@ -86,22 +84,22 @@ public class TeacherDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return result;
     }
 
-    public void insert(Teacher teacher){
+    @Override
+    public void insert(Student student){
         try {
             Connection c = DBUtil.getConnection();
 
-            String sql = "insert into teacher(name, subject, number, piece, password) value(?, ?, ?, ?, ?)";
+            String sql = "insert into student(name, subject, number, piece, password) value(?, ?, ?, ?, ?)";
 
             PreparedStatement ps = c.prepareStatement(sql);
-            ps.setString(1, teacher.getName());
-            ps.setString(2, teacher.getSubject());
-            ps.setString(3, teacher.getNumber());
-            ps.setFloat(4, teacher.getPiece());
-            ps.setString(5,teacher.getPassword());
+            ps.setString(1, student.getName());
+            ps.setString(2, student.getSubject());
+            ps.setString(3, student.getNumber());
+            ps.setFloat(4, student.getPiece());
+            ps.setString(5, student.getPassword());
 
             ps.executeUpdate();
 

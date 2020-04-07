@@ -1,7 +1,7 @@
 package servlet;
 
 import bean.Teacher;
-import dao.TeacherDAO;
+import dao.TeacherDaoImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class TeacherRegisterServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setCharacterEncoding("utf-8");
         String name = request.getParameter("name");
         String password = request.getParameter("password");
         String subject = request.getParameter("subject");
@@ -25,7 +25,7 @@ public class TeacherRegisterServlet extends HttpServlet {
         teacher.setSubject(subject);
         teacher.setNumber(number);
         teacher.setPiece(piece);
-        new TeacherDAO().insert(teacher);
+        new TeacherDaoImpl().insert(teacher);
         response.sendRedirect("/login.jsp");
 
     }

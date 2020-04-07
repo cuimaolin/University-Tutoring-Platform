@@ -2,8 +2,8 @@ package servlet;
 
 import bean.Student;
 import bean.Teacher;
-import dao.StudentDAO;
-import dao.TeacherDAO;
+import dao.StudentDaoImpl;
+import dao.TeacherDaoImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,11 +13,11 @@ import java.io.IOException;
 
 public class LoginServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setCharacterEncoding("utf-8");
         String name = request.getParameter("name");
         String password = request.getParameter("password");
-        Teacher teacher = new TeacherDAO().getTeacher(name, password);
-        Student student = new StudentDAO().getStudent(name, password);
+        Teacher teacher = new TeacherDaoImpl().getUser(name, password);
+        Student student = new StudentDaoImpl().getUser(name, password);
         if (null != teacher){
             request.getSession().setAttribute("teacher", teacher);
             response.sendRedirect("/listStudent");

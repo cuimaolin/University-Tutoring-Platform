@@ -1,41 +1,43 @@
 package dao;
 
-import bean.Student;
+import bean.Teacher;
 import util.DBUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentDAO {
+public class TeacherDaoImpl implements UserDao<Teacher> {
 
-    public List<Student> ListStudent(){
-        List<Student> students = new ArrayList<Student>();
+    @Override
+    public List<Teacher> listUser() {
+        List<Teacher> teachers = new ArrayList<Teacher>();
+
         try{
             Connection c = DBUtil.getConnection();
 
-            String sql = "select * from student order by id desc";
+            String sql = "select * from teacher order by id desc";
 
             PreparedStatement ps = c.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                Student student = new Student();
-                int id = rs.getInt(1);
-                String name = rs.getString(2);
+                Teacher teacher = new Teacher();
+                int id = rs.getInt(2);
+                String name = rs.getString(1);
                 String subject = rs.getString(3);
                 String number = rs.getString(4);
                 float price = rs.getFloat(5);
                 String password = rs.getString(6);
 
-                student.setId(id);
-                student.setName(name);
-                student.setNumber(number);
-                student.setSubject(subject);
-                student.setPiece(price);
-                student.setPassword(password);
-                students.add(student);
+                teacher.setId(id);
+                teacher.setName(name);
+                teacher.setNumber(number);
+                teacher.setSubject(subject);
+                teacher.setPiece(price);
+                teacher.setPassword(password);
+                teachers.add(teacher);
             }
 
             ps.close();
@@ -44,15 +46,16 @@ public class StudentDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return students;
+        return teachers;
     }
 
-    public Student getStudent(String name, String password){
-        Student result = null;
+    @Override
+    public Teacher getUser(String name, String password) {
+        Teacher result = null;
         try {
             Connection c = DBUtil.getConnection();
 
-            String sql = "select * from student where name = ? and password = ?";
+            String sql = "select * from teacher where name = ? and password = ?";
 
             PreparedStatement ps = c.prepareStatement(sql);
 
@@ -61,8 +64,8 @@ public class StudentDAO {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()){
-                result = new Student();
-                int id = rs.getInt(1);
+                result = new Teacher();
+                int id = rs.getInt(2);
                 String subject = rs.getString(3);
                 String number = rs.getString(4);
                 float price = rs.getFloat(5);
@@ -82,20 +85,23 @@ public class StudentDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return result;
     }
-    public void insert(Student student){
+
+    @Override
+    public void insert(Teacher teacher){
         try {
             Connection c = DBUtil.getConnection();
 
-            String sql = "insert into student(name, subject, number, piece, password) value(?, ?, ?, ?, ?)";
+            String sql = "insert into teacher(name, subject, number, piece, password) value(?, ?, ?, ?, ?)";
 
             PreparedStatement ps = c.prepareStatement(sql);
-            ps.setString(1, student.getName());
-            ps.setString(2, student.getSubject());
-            ps.setString(3, student.getNumber());
-            ps.setFloat(4, student.getPiece());
-            ps.setString(5, student.getPassword());
+            ps.setString(1, teacher.getName());
+            ps.setString(2, teacher.getSubject());
+            ps.setString(3, teacher.getNumber());
+            ps.setFloat(4, teacher.getPiece());
+            ps.setString(5,teacher.getPassword());
 
             ps.executeUpdate();
 

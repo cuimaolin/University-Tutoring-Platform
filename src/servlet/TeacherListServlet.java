@@ -1,9 +1,7 @@
 package servlet;
 
-import bean.Student;
 import bean.Teacher;
-import dao.StudentDAO;
-import dao.TeacherDAO;
+import dao.TeacherDaoImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,8 +13,9 @@ import java.util.List;
 public class TeacherListServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        request.setCharacterEncoding("utf-8");
 
-        List<Teacher> teachers = new TeacherDAO().ListTeacher();
+        List<Teacher> teachers = new TeacherDaoImpl().listUser();
 
         request.setAttribute("teachers", teachers);
 
