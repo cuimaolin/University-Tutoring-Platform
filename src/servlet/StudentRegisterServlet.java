@@ -11,6 +11,7 @@ import java.io.IOException;
 
 public class StudentRegisterServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String name = request.getParameter("name");
         String password = request.getParameter("password");
         String subject = request.getParameter("subject");
@@ -25,6 +26,6 @@ public class StudentRegisterServlet extends HttpServlet {
         student.setNumber(number);
         student.setPiece(piece);
         new StudentDAO().insert(student);
-        response.sendRedirect("/loginStudent.jsp");
+        response.sendRedirect("/login.jsp");
     }
 }

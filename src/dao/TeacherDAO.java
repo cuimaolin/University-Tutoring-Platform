@@ -1,7 +1,7 @@
 package dao;
 
-import bean.Student;
 import bean.Teacher;
+import util.DBUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class TeacherDAO {
         List<Teacher> teachers = new ArrayList<Teacher>();
 
         try{
-            Connection c = dao.JDBCTools.getConnection();
+            Connection c = DBUtil.getConnection();
 
             String sql = "select * from teacher order by id desc";
 
@@ -54,7 +54,7 @@ public class TeacherDAO {
     public Teacher getTeacher(String name, String password){
         Teacher result = null;
         try {
-            Connection c = dao.JDBCTools.getConnection();
+            Connection c = DBUtil.getConnection();
 
             String sql = "select * from teacher where name = ? and password = ?";
 
@@ -92,7 +92,7 @@ public class TeacherDAO {
 
     public void insert(Teacher teacher){
         try {
-            Connection c = dao.JDBCTools.getConnection();
+            Connection c = DBUtil.getConnection();
 
             String sql = "insert into teacher(name, subject, number, piece, password) value(?, ?, ?, ?, ?)";
 
