@@ -8,35 +8,54 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" language="java" %>
 <html>
 <head>
-    <title>请注册</title>
-    <link rel="stylesheet" href="./css/style.css" type="text/css">
+    <%-- 引入JQ和Bootstrap --%>
+    <script src="js/jquery/2.0.0/jquery.min.js"></script>
+    <link href="css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap/3.3.6/bootstrap.min.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+
+    <title>大学生家教平台 - 老师注册界面</title>
 </head>
 <body>
-    <form action="registerTeacher" align="center" method="post">
-        <div>
-            <label>账号：</label>
-            <input type="text" name="name">
+
+<div class="editDIV">
+    <div class="panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">亲爱的老师，请登录</h3>
         </div>
-        <div>
-            <label>密码：</label>
-            <input type="password" name="password">
+        <div class="panel-body">
+            <form method="post" action="registerTeacher" role="form">
+                <table class="editTable">
+                    <tr>
+                        <td>账号：</td>
+                        <td><input type="text" name="name" placeholder="请输入您的账号"></td>
+                    </tr>
+                    <tr>
+                        <td>密码：</td>
+                        <td><input type="password" name="password" placeholder="请输入您的密码"></td>
+                    </tr>
+                    <tr>
+                        <td>科目：</td>
+                        <td><input type="text" name="subject" placeholder="请输入您擅长的科目"></td>
+                    </tr>
+                    <tr>
+                        <td>联系方式：</td>
+                        <td><input type="text" name="number" placeholder="请输入您的联系方式"></td>
+                    </tr>
+                    <tr>
+                        <td>期望薪资：</td>
+                        <td><input type="text" name="piece" placeholder="请输入您期望的薪资"></td>
+                    </tr>
+                    <tr class="submitTR">
+                        <td colspan="2" align="center">
+                            <button type="submit" class="btn btn-success">登录</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </div>
-        <div>
-            <label>辅导科目：</label>
-            <input type="text" name="subject">
-        </div>
-        <div>
-            <label>联系方式：</label>
-            <input type="text" name="number">
-        </div>
-        <div>
-            <label>期望薪资：</label>
-            <input type="text" name="piece">
-        </div>
-        <div>
-            <input type="submit"  value="注册">
-        </div>
-    </form>
+    </div>
+</div>
 
 </body>
 </html>

@@ -1,52 +1,42 @@
 body {
-    font-family: "微软雅黑";
-    background-image:url('../img/background.jpg');
-    margin: 20px auto;
-    text-align:center;
+    padding-top: 60px;
 }
 
-.block{
+div.listDIV {
+    width: 600px;
+    margin: 0 auto;
+}
+
+div.editDIV {
     width: 400px;
-    display: block;
-    margin:5px 0;
+    margin: 0 auto;
 }
 
-.center{
+nav.pageDIV {
     text-align: center;
 }
 
-label {
-    display: inline-block;
-    width: 100px;
-    text-align: right;
-}
-input,textarea{
-    vertical-align: top;
+div.addDIV {
+    width: 300px;
+    margin: 0 auto;
 }
 
-table
-{
-  border-collapse: collapse;
-  margin: 0 auto;
-  text-align: center;
+table.addTable {
+    width: 100%;
+    padding: 5px;
 }
-table td, table th
-{
-    border: 2px solid #cad9ea;
-    color: #666;
-    height: 30px;
+
+table.addTable td {
+    padding: 5px;
 }
-table thead th
-{
-    background-color: #CCE8EB;
-    width: 100px;
+
+table.editTable {
+    width: 100%;
+    padding: 5px;
 }
-table tr:nth-child(odd)
-{
-    background: #fff;
+
+table.editTable td {
+    padding: 5px;
 }
-table tr:nth-child(even)
-{
-    background: #F5FAFA;
-}
+
 

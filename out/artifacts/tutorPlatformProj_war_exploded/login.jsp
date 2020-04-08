@@ -8,29 +8,49 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" language="java" %>
 <html>
 <head>
-    <title>登录界面</title>
-    <link rel="stylesheet" href="./css/style.css" type="text/css">
+    <%-- 引入JQ和Bootstrap --%>
+    <script src="js/jquery/2.0.0/jquery.min.js"></script>
+    <link href="css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap/3.3.6/bootstrap.min.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+
+    <title>大学生家教平台 - 登录界面</title>
 </head>
+
 <body>
-    <h2 align="center">亲爱的用户，请登录</h2>
-    <form action="login" align="center" method="post">
-        <div>
-            <label>账号：</label>
-            <input type="text" name="name">
+
+<div class="addDIV">
+    <div class="panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">亲爱的用户，请登录</h3>
         </div>
-        <div>
-            <label>密码：</label>
-            <input type="password" name="password">
+        <div class="panel-body">
+            <form method="post" action="login" role="form">
+                <table class="editTable">
+                    <tr>
+                        <td>账号：</td>
+                        <td><input type="text" name="name" placeholder="请输入您的账号"></td>
+                    </tr>
+                    <tr>
+                        <td>密码：</td>
+                        <td><input type="password" name="password" placeholder="请输入您的密码"></td>
+                    </tr>
+                    <tr class="submitTR">
+                        <td colspan="2" align="center">
+                            <button type="submit" class="btn btn-success">登录</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </div>
-        <div>
-            <input type="submit"  value="登录">
+        <div align="center">
+            <a href="registerTeacher.jsp">注册成为老师</a>
         </div>
-    </form>
-    <div align="center">
-        <a href="registerTeacher.jsp">注册成为老师</a>
+        <div align="center">
+            <a href="registerStudent.jsp" align="center">注册成为家长</a>
+        </div>
     </div>
-    <div align="center">
-        <a href="registerStudent.jsp" align="center">注册成为家长</a>
-    </div>
+</div>
+
 </body>
 </html>
