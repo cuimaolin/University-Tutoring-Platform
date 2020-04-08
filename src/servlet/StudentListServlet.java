@@ -14,8 +14,6 @@ public class StudentListServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException{
 
-        request.setCharacterEncoding("utf-8");
-
         List<Student> students = new StudentDaoImpl().listUser();
 
         request.setAttribute("students", students);

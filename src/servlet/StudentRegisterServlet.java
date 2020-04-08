@@ -12,7 +12,6 @@ import java.io.IOException;
 public class StudentRegisterServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.setCharacterEncoding("utf-8");
         String name = request.getParameter("name");
         String password = request.getParameter("password");
         String subject = request.getParameter("subject");
