@@ -28,8 +28,8 @@
             <form method="post" action="login" role="form">
                 <table class="editTable">
                     <tr>
-                        <td>账号：</td>
-                        <td><input type="text" name="name" placeholder="请输入您的账号"></td>
+                        <td>用户名：</td>
+                        <td><input type="text" name="nick" placeholder="请输入您的用户名"></td>
                     </tr>
                     <tr>
                         <td>密码：</td>

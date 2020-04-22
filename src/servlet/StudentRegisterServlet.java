@@ -2,29 +2,35 @@ package servlet;
 
 import bean.Student;
 import dao.StudentDaoImpl;
+import dao.TeacherDaoImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class StudentRegisterServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String name = request.getParameter("name");
-        String password = request.getParameter("password");
-        String subject = request.getParameter("subject");
-        String number = request.getParameter("number");
-        String piece_str = request.getParameter("piece");
-        float piece = Float.parseFloat(piece_str);
-
         Student student = new Student();
-        student.setName(name);
-        student.setPassword(password);
-        student.setSubject(subject);
-        student.setNumber(number);
-        student.setPiece(piece);
+        student.setNick(request.getParameter("nick"));
+        student.setPassword(request.getParameter("password"));
+        student.setName(request.getParameter("name"));
+        student.setSex(request.getParameter("sex"));
+        student.setAge(Integer.parseInt(request.getParameter("age")));
+        student.setGrade(request.getParameter("grade"));
+        student.setAddress(request.getParameter("address"));
+        student.setTele(request.getParameter("tele"));
+        student.setSubjects(request.getParameter("subjects"));
+        student.setSalary(Float.parseFloat(request.getParameter("salary")));
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        student.setReleaseDate(sdf.format(date));
+        student.setDemo(request.getParameter("demo"));
+
         new StudentDaoImpl().insert(student);
         response.sendRedirect("/login.jsp");
     }

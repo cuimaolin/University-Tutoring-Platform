@@ -23,20 +23,23 @@ public class StudentDaoImpl implements UserDao<Student>{
 
             while (rs.next()) {
                 Student student = new Student();
-                int id = rs.getInt(1);
-                String name = rs.getString(2);
-                String subject = rs.getString(3);
-                String number = rs.getString(4);
-                float price = rs.getFloat(5);
-                String password = rs.getString(6);
 
-                student.setId(id);
-                student.setName(name);
-                student.setNumber(number);
-                student.setSubject(subject);
-                student.setPiece(price);
-                student.setPassword(password);
+                student.setId(rs.getInt("id"));
+                student.setNick(rs.getString("nick"));
+                student.setPassword(rs.getString("password"));
+                student.setName(rs.getString("name"));
+                student.setSex(rs.getString("sex"));
+                student.setAge(rs.getInt("age"));
+                student.setAddress(rs.getString("address"));
+                student.setTele(rs.getString("tele"));
+                student.setGrade(rs.getString("grade"));
+                student.setSubjects(rs.getString("subjects"));
+                student.setSalary(rs.getFloat("salary"));
+                student.setReleaseDate(rs.getString("releaseDate"));
+                student.setDemo(rs.getString("demo"));
+
                 students.add(student);
+
             }
 
             ps.close();
@@ -49,32 +52,34 @@ public class StudentDaoImpl implements UserDao<Student>{
     }
 
     @Override
-    public Student getUser(String name, String password) {
+    public Student getUser(String nick, String password) {
         Student result = null;
         try {
             Connection c = DBUtil.getConnection();
 
-            String sql = "select * from student where name = ? and password = ?";
+            String sql = "select * from student where nick = ? and password = ?";
 
             PreparedStatement ps = c.prepareStatement(sql);
 
-            ps.setString(1, name);
+            ps.setString(1, nick);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()){
                 result = new Student();
-                int id = rs.getInt(1);
-                String subject = rs.getString(3);
-                String number = rs.getString(4);
-                float price = rs.getFloat(5);
-
-                result.setId(id);
-                result.setNumber(number);
-                result.setSubject(subject);
-                result.setPiece(price);
-                result.setName(name);
-                result.setPassword(password);
+                result.setId(rs.getInt("id"));
+                result.setNick(rs.getString("nick"));
+                result.setPassword(rs.getString("password"));
+                result.setName((rs.getString("name")));
+                result.setSex(rs.getString("sex"));
+                result.setAge(rs.getInt("age"));
+                result.setGrade(rs.getString("grade"));
+                result.setAddress(rs.getString("address"));
+                result.setTele(rs.getString("tele"));
+                result.setSubjects(rs.getString("subjects"));
+                result.setSalary(rs.getFloat("salary"));
+                result.setReleaseDate(rs.getString("releaseDate"));
+                result.setDemo(rs.getString("demo"));
             }
 
             ps.close();
@@ -92,14 +97,22 @@ public class StudentDaoImpl implements UserDao<Student>{
         try {
             Connection c = DBUtil.getConnection();
 
-            String sql = "insert into student(name, subject, number, piece, password) value(?, ?, ?, ?, ?)";
+            String sql = "insert into student(nick, password, name, sex, age, grade, address, tele, subjects, " +
+                    "salary, releaseDate, demo) value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement ps = c.prepareStatement(sql);
-            ps.setString(1, student.getName());
-            ps.setString(2, student.getSubject());
-            ps.setString(3, student.getNumber());
-            ps.setFloat(4, student.getPiece());
-            ps.setString(5, student.getPassword());
+            ps.setString(1, student.getNick());
+            ps.setString(2, student.getPassword());
+            ps.setString(3, student.getName());
+            ps.setString(4, student.getSex());
+            ps.setInt(5, student.getAge());
+            ps.setString(6, student.getGrade());
+            ps.setString(7, student.getAddress());
+            ps.setString(8, student.getTele());
+            ps.setString(9, student.getSubjects());
+            ps.setFloat(10, student.getSalary());
+            ps.setString(11, student.getReleaseDate());
+            ps.setString(12, student.getDemo());
 
             ps.executeUpdate();
 

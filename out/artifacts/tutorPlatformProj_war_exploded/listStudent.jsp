@@ -25,22 +25,32 @@
         <caption>亲爱的${teacher.name}老师，这是我们平台的学员名单：</caption>
         <thead>
         <tr class="success">
-            <td>学生id</td>
-            <td>学生姓名</td>
-            <td>需要补习科目</td>
+            <td>姓名</td>
+            <td>性别</td>
+            <td>年龄</td>
+            <td>地址</td>
             <td>联系方式</td>
-            <td>可支付薪资(元/小时)</td>
+            <td>学习情况</td>
+            <td>辅导科目</td>
+            <td>可支付薪资</td>
+            <td>发布日期</td>
+            <td>其他信息</td>
         </tr>
         </thead>
 
         <tbody>
         <c:forEach items="${students}" var="student" varStatus="st">
             <tr>
-                <td>${student.id}</td>
                 <td>${student.name}</td>
-                <td>${student.subject}</td>
-                <td>${student.number}</td>
-                <td>${student.piece}</td>
+                <td>${student.sex}</td>
+                <td>${student.age}</td>
+                <td>${student.address}</td>
+                <td>${student.tele}</td>
+                <td>${student.grade}</td>
+                <td>${student.subjects}</td>
+                <td>${student.salary}</td>
+                <td>${student.releaseDate}</td>
+                <td>${student.demo}</td>
             </tr>
         </c:forEach>
 
