@@ -1,4 +1,4 @@
-# 创建student表
+## 创建student表
 
 ```sql
 CREATE TABLE Student(  
@@ -19,7 +19,7 @@ CREATE TABLE Student(
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8; 
 ```
 
-# 创建teacher表
+## 创建teacher表
 
 ```sql
 CREATE TABLE Teacher(  
@@ -40,3 +40,6 @@ CREATE TABLE Teacher(
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8; 
 ```
 
+## ER图
+                                                                                          
+![image](https://github.com/cuimaolin/University-tutoring-platform/blob/master/document/ERdiagram.png)

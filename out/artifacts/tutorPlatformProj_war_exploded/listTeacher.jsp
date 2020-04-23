@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: 56808
   Date: 2020/4/5
-  Time: 17:06
+  Time: 15:58
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" language="java" %>
@@ -18,13 +18,13 @@
     <title>大学生家教平台 - 老师列表</title>
 
 </head>
-
 <body>
+
 <div class="listDIV">
-    <table class="table table-striped table-bordered table-hover table-condensed">
+    <table class="table table-striped table-bordered table-hover table-condensed" style="white-space:nowrap">
         <caption>亲爱的${student.name}家长，这是我们平台的老师名单：</caption>
         <thead>
-        <tr>
+        <tr class="success">
             <td>姓名</td>
             <td>性别</td>
             <td>年龄</td>
@@ -60,3 +60,4 @@
 
 </body>
 </html>
+

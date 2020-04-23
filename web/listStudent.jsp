@@ -21,7 +21,7 @@
 <body>
 
 <div class="listDIV">
-    <table class="table table-striped table-bordered table-hover table-condensed">
+    <table class="table table-striped table-bordered table-hover table-condensed" style="white-space:nowrap">
         <caption>亲爱的${teacher.name}老师，这是我们平台的学员名单：</caption>
         <thead>
         <tr class="success">
