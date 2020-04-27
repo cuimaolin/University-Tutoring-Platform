@@ -33,5 +33,9 @@
     </orderEntry>
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
     <orderEntry type="library" name="tomcat-api" level="project" />
+    <orderEntry type="library" name="json" level="project" />
+    <orderEntry type="library" name="Unnamed" level="project" />
+    <orderEntry type="library" name="org" level="project" />
+    <orderEntry type="library" name="json-20190722" level="project" />
   </component>
 </module>

@@ -1,56 +1,43 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 56808
-  Date: 2020/4/5
-  Time: 22:08
-  To change this template use File | Settings | File Templates.
---%>
+<!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" language="java" %>
-<html>
+<html lang="zh-CN">
 <head>
-    <%-- 引入JQ和Bootstrap --%>
-    <script src="js/jquery/2.0.0/jquery.min.js"></script>
-    <link href="css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
-    <script src="js/bootstrap/3.3.6/bootstrap.min.js"></script>
-    <link href="css/style.css" rel="stylesheet">
-
+    <meta charset="utf-8">
     <title>大学生家教平台 - 登录界面</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="css/layui.css" media="all" />
+    <link rel="stylesheet" href="css/login.css" media="all" />
 </head>
-
 <body>
-
-<div class="addDIV">
-    <div class="panel-success">
-        <div class="panel-heading">
-            <h3 class="panel-title">亲爱的用户，请登录</h3>
-        </div>
-        <div class="panel-body">
-            <form method="post" action="login" role="form">
-                <table class="editTable">
-                    <tr>
-                        <td>用户名：</td>
-                        <td><input type="text" name="nick" placeholder="请输入您的用户名"></td>
-                    </tr>
-                    <tr>
-                        <td>密码：</td>
-                        <td><input type="password" name="password" placeholder="请输入您的密码"></td>
-                    </tr>
-                    <tr class="submitTR">
-                        <td colspan="2" align="center">
-                            <button type="submit" class="btn btn-success">登录</button>
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-        <div align="center">
-            <a href="registerTeacher.jsp">注册成为老师</a>
-        </div>
-        <div align="center">
-            <a href="registerStudent.jsp" align="center">注册成为家长</a>
-        </div>
+<form class="layui-form" action="login" method="post">
+    <video class="video-player" preload="auto" autoplay="autoplay" loop="loop" data-height="1080" data-width="1920" height="1080" width="1920">
+        <source src="images/login.mp4" type="video/mp4">
+    </video>
+    <div class="video_mask"></div>
+    <div class="login">
+        <h1>大学生家教平台-登录</h1>
+        <form class="layui-form" action="login" method="post">
+            <div class="layui-form-item">
+                <input class="layui-input" name="nick" placeholder="用户名" lay-verify="required" type="text" autocomplete="off">
+            </div>
+            <div class="layui-form-item">
+                <input class="layui-input" name="password" placeholder="密码" lay-verify="required" type="password" autocomplete="off">
+            </div>
+            <div class="layui-form-item form_code">
+                <input class="layui-input" name="code" placeholder="验证码" lay-verify="required" type="text" autocomplete="off">
+                <div class="code"><img src="../../images/code.jpg" width="116" height="36"></div>
+            </div>
+            <button class="layui-btn login_btn" lay-submit="" lay-filter="login">登录</button>
+            <a href="registerTeacher.jsp" style="color: white; text-align: left">老师注册 </a>
+            <a href="registerStudent.jsp" style="color: white; text-align: center">家长注册 </a>
+            <a href="registerStudent.jsp" style="color: white; text-align: right">管理员注册</a>
+        </form>
     </div>
-</div>
-
 </body>
+<script src="js/layui.js"></script>
 </html>
