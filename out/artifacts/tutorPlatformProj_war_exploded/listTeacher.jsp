@@ -25,18 +25,18 @@
             <legend>家教列表</legend>
         </fieldset>
 
-        <form class="layui-form" action="">
+        <form class="layui-form" action="listTeacher">
             <div class="layui-form-item">
                 <div class="layui-inline">
                     <label class="layui-form-label">所在年级</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="title" lay-verify="title" autocomplete="off" class="layui-input">
+                        <input type="text" name="grade" lay-verify="title" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">讲授科目</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="title" lay-verify="title" autocomplete="off" class="layui-input">
+                        <input type="text" name="subjects" lay-verify="title" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-inline">

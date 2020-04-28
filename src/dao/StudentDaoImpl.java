@@ -10,12 +10,10 @@ import java.util.List;
 public class StudentDaoImpl implements UserDao<Student>{
 
     @Override
-    public List<Student> listUser() {
+    public List<Student> listUser(String sql) {
         List<Student> students = new ArrayList<Student>();
         try{
             Connection c = DBUtil.getConnection();
-
-            String sql = "select * from student order by id desc";
 
             PreparedStatement ps = c.prepareStatement(sql);
 

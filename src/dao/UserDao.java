@@ -12,7 +12,7 @@ public interface UserDao<T> {
      * 得到数据库中的所有user
      * @return
      */
-    List<T> listUser();
+    List<T> listUser(String sql);
 
     /**
      * 得到账号为name，密码为password的user
