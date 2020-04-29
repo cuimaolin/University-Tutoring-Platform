@@ -9,7 +9,8 @@ import java.util.List;
 public interface UserDao<T> {
 
     /**
-     * 得到数据库中的所有user
+     * 根据传入的sql进行查询，并返回user列表
+     * @param sql
      * @return
      */
     List<T> listUser(String sql);

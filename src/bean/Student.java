@@ -3,6 +3,9 @@ package bean;
 import java.util.Date;
 
 public class Student {
+    /**
+     *
+     */
     private int id;             //数据库中的ID
     private String nick;        //用户名
     private String password;    //密码

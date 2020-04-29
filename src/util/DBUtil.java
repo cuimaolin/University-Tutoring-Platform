@@ -12,6 +12,9 @@ import java.sql.SQLException;
  */
 public class DBUtil {
 
+	/**
+	 * 配置MySQL的ip，port,登录信息以及编码格式
+	 */
 	static String ip = "127.0.0.1";
 	static int port = 3306;
 	static String database = "tutor";

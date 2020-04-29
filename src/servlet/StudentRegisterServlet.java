@@ -15,6 +15,9 @@ import java.util.Date;
 public class StudentRegisterServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        /**
+         * 利用页面传入属性定义一个student对象
+         */
         Student student = new Student();
         student.setNick(request.getParameter("nick"));
         student.setPassword(request.getParameter("password"));
@@ -31,6 +34,9 @@ public class StudentRegisterServlet extends HttpServlet {
         student.setReleaseDate(sdf.format(date));
         student.setDemo(request.getParameter("demo"));
 
+        /**
+         * 插入student对象并重定位到登录界面
+         */
         new StudentDaoImpl().insert(student);
         response.sendRedirect("/login.jsp");
     }

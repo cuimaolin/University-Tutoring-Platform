@@ -14,10 +14,13 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String nick = request.getParameter("nick");
-        String password = request.getParameter("password");
-        Teacher teacher = new TeacherDaoImpl().getUser(nick, password);
+        String nick = request.getParameter("nick");             //得到用户账号
+        String password = request.getParameter("password");     //得到用户密码
+        Teacher teacher = new TeacherDaoImpl().getUser(nick, password);     //根据用户账号和密码进行查找
         Student student = new StudentDaoImpl().getUser(nick, password);
+        /**
+         * 判断用户类型并重定位，若无对应用户则登录失败
+         */
         if (null != teacher){
             request.getSession().setAttribute("teacher", teacher);
             response.sendRedirect("/listStudent");

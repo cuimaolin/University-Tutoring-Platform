@@ -11,15 +11,19 @@ public class StudentDaoImpl implements UserDao<Student>{
 
     @Override
     public List<Student> listUser(String sql) {
+
         List<Student> students = new ArrayList<Student>();
         try{
-            Connection c = DBUtil.getConnection();
+            Connection c = DBUtil.getConnection();      //获得JDBC连接
 
-            PreparedStatement ps = c.prepareStatement(sql);
+            PreparedStatement ps = c.prepareStatement(sql);     //传入sql语句
 
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();           //进行查询
 
             while (rs.next()) {
+                /**
+                 * 根据查询的结果得到student列表
+                 */
                 Student student = new Student();
 
                 student.setId(rs.getInt("id"));
@@ -53,17 +57,20 @@ public class StudentDaoImpl implements UserDao<Student>{
     public Student getUser(String nick, String password) {
         Student result = null;
         try {
-            Connection c = DBUtil.getConnection();
+            Connection c = DBUtil.getConnection();      //获得JDBC连接
 
-            String sql = "select * from student where nick = ? and password = ?";
+            String sql = "select * from student where nick = ? and password = ?";       //定义sql语句
 
-            PreparedStatement ps = c.prepareStatement(sql);
+            PreparedStatement ps = c.prepareStatement(sql);     //传入sql语句
 
-            ps.setString(1, nick);
+            ps.setString(1, nick);              //补充sql语句中的占位符
             ps.setString(2, password);
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();                   //执行查询
 
             if (rs.next()){
+                /**
+                 * 得到查询结果，并得到student对象
+                 */
                 result = new Student();
                 result.setId(rs.getInt("id"));
                 result.setNick(rs.getString("nick"));
@@ -93,12 +100,15 @@ public class StudentDaoImpl implements UserDao<Student>{
     @Override
     public void insert(Student student){
         try {
-            Connection c = DBUtil.getConnection();
+            Connection c = DBUtil.getConnection();          //获得JDBC连接
 
             String sql = "insert into student(nick, password, name, sex, age, grade, address, tele, subjects, " +
-                    "salary, releaseDate, demo) value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    "salary, releaseDate, demo) value(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";     //定义sql语句
 
-            PreparedStatement ps = c.prepareStatement(sql);
+            PreparedStatement ps = c.prepareStatement(sql);             //传入sql语句
+            /**
+             * 补充sql语句中的占位符
+             */
             ps.setString(1, student.getNick());
             ps.setString(2, student.getPassword());
             ps.setString(3, student.getName());
@@ -112,7 +122,7 @@ public class StudentDaoImpl implements UserDao<Student>{
             ps.setString(11, student.getReleaseDate());
             ps.setString(12, student.getDemo());
 
-            ps.executeUpdate();
+            ps.executeUpdate();     //执行insert
 
         } catch (Exception e) {
             e.printStackTrace();
